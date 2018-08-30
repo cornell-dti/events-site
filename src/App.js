@@ -6,6 +6,7 @@ import Typography from "@material-ui/core/Typography/Typography";
 import { withStyles } from '@material-ui/core/styles';
 import Button from "@material-ui/core/Button/Button";
 import CreateOrg from "./CreateOrg";
+import SelectTags from "./SelectTags";
 
 class App extends Component
 {
@@ -33,7 +34,7 @@ class App extends Component
 						</Toolbar>
 					</AppBar>
 					<div className={classes.appBarSpace} />
-					<CreateOrg />
+					<SelectTags />
 				</div>
 			</React.Fragment>
 		);

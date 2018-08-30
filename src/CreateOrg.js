@@ -1,8 +1,7 @@
 import React, {Component} from 'react';
-import Typography from "@material-ui/core/Typography/Typography";
 import TextField from "@material-ui/core/TextField/TextField";
-import Button from "@material-ui/core/Button/Button";
 import {withStyles} from "@material-ui/core";
+import Onboarding from "./components/Onboarding";
 
 class CreateOrg extends Component
 {
@@ -16,11 +15,9 @@ class CreateOrg extends Component
 	{
 		const {classes} = this.props;
 		return (
-			<div className={classes.root}>
-				<Typography variant={"title"}>
-					Create an organization account
-				</Typography>
+			<Onboarding title={"Create an Organization Account"} body={""} button={"Continue"}>
 				<TextField
+					required
 					id="name"
 					label="Organization name"
 					className={classes.textField}
@@ -28,14 +25,16 @@ class CreateOrg extends Component
 					onChange={e => this.setState({name: e.target.value})}
 					margin={"normal"} />
 				<TextField
-					id="name"
+					required
+					id="email"
 					label="Organization email"
 					className={classes.textField}
 					value={this.state.email}
 					onChange={e => this.setState({email: e.target.value})}
 					margin={"normal"} />
 				<TextField
-					id="name"
+					required
+					id="password"
 					label="Password"
 					className={classes.textField}
 					value={this.state.password}
@@ -43,7 +42,8 @@ class CreateOrg extends Component
 					margin={"normal"}
 					type={"password"}/>
 				<TextField
-					id="name"
+					required
+					id="confirmPassword"
 					label="Confirm password"
 					className={classes.textField}
 					value={this.state.confirmPassword}
@@ -52,10 +52,7 @@ class CreateOrg extends Component
 					type={"password"}
 					error={this.confirmPasswordError()}
 					helperText={this.confirmPasswordError() ? "Passwords do not match" : ""}/>
-				<Button variant={"outlined"} color={"primary"} className={classes.button}>
-					Continue
-				</Button>
-			</div>
+			</Onboarding>
 		);
 	}
 }
