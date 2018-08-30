@@ -5,6 +5,7 @@ import Toolbar from "@material-ui/core/Toolbar/Toolbar";
 import Typography from "@material-ui/core/Typography/Typography";
 import { withStyles } from '@material-ui/core/styles';
 import Button from "@material-ui/core/Button/Button";
+import CreateOrg from "./CreateOrg";
 
 class App extends Component
 {
@@ -31,22 +32,25 @@ class App extends Component
 							</Button>
 						</Toolbar>
 					</AppBar>
+					<div className={classes.appBarSpace} />
+					<CreateOrg />
 				</div>
 			</React.Fragment>
 		);
 	}
 }
 
-const styles = {
+const styles = (theme) => ({
 	root: {
-		flexGrow: 1
+		flexGrow: 1,
+		display: 'flex',
+		flexDirection: 'column',
+		alignItems: 'center'
 	},
 	title: {
 		flexGrow: 1
 	},
-	button: {
-
-	}
-};
+	appBarSpace: theme.mixins.toolbar
+});
 
 export default withStyles(styles)(App);
