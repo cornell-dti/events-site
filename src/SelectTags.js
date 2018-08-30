@@ -6,7 +6,6 @@ import Button from "@material-ui/core/Button/Button";
 import Onboarding from "./components/Onboarding";
 import TextField from "@material-ui/core/TextField/TextField";
 import InputAdornment from "@material-ui/core/InputAdornment/InputAdornment";
-import util from 'util';
 
 class SelectTags extends Component
 {
