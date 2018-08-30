@@ -1,7 +1,5 @@
 import React, {Component} from 'react';
-import logo from './logo.svg';
 import CssBaseline from '@material-ui/core/CssBaseline';
-import './App.css';
 import AppBar from "@material-ui/core/AppBar/AppBar";
 import Toolbar from "@material-ui/core/Toolbar/Toolbar";
 import Typography from "@material-ui/core/Typography/Typography";
