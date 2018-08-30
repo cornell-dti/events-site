@@ -10,6 +10,9 @@ import SelectTags from "./SelectTags";
 import VerifyCornellStatus from "./VerifyCornellStatus";
 import VerifyOrg from "./VerifyOrg";
 import VerifyDone from "./VerifyDone";
+import {Provider} from "react-redux";
+import {createStore} from "redux";
+import reducers from "./redux/reducers";
 
 class App extends Component
 {
@@ -17,29 +20,31 @@ class App extends Component
 	{
 		const {classes} = this.props;
 		return (
-			<React.Fragment>
-				<CssBaseline />
-				<div className={classes.root}>
-					<AppBar color={"default"}>
-						<Toolbar>
-							<Typography variant={"title"} color={"inherit"} className={classes.title}>
-								Events
-							</Typography>
-							<Typography variant={"title"} color={"inherit"}>
-								Are you an organization?
-							</Typography>
-							<Button color={"primary"} className={classes.button}>
-								Log in
-							</Button>
-							<Button variant={"outlined"} color={"primary"} className={classes.button}>
-								Sign up
-							</Button>
-						</Toolbar>
-					</AppBar>
-					<div className={classes.appBarSpace} />
-					<VerifyDone />
-				</div>
-			</React.Fragment>
+			<Provider store={createStore(reducers)}>
+				<React.Fragment>
+					<CssBaseline />
+					<div className={classes.root}>
+						<AppBar color={"default"}>
+							<Toolbar>
+								<Typography variant={"title"} color={"inherit"} className={classes.title}>
+									Events
+								</Typography>
+								<Typography variant={"title"} color={"inherit"}>
+									Are you an organization?
+								</Typography>
+								<Button color={"primary"} className={classes.button}>
+									Log in
+								</Button>
+								<Button variant={"outlined"} color={"primary"} className={classes.button}>
+									Sign up
+								</Button>
+							</Toolbar>
+						</AppBar>
+						<div className={classes.appBarSpace} />
+						<VerifyDone />
+					</div>
+				</React.Fragment>
+			</Provider>
 		);
 	}
 }
