@@ -9,6 +9,7 @@ import CreateOrg from "./CreateOrg";
 import SelectTags from "./SelectTags";
 import VerifyCornellStatus from "./VerifyCornellStatus";
 import VerifyOrg from "./VerifyOrg";
+import VerifyDone from "./VerifyDone";
 
 class App extends Component
 {
@@ -36,7 +37,7 @@ class App extends Component
 						</Toolbar>
 					</AppBar>
 					<div className={classes.appBarSpace} />
-					<VerifyOrg />
+					<VerifyDone />
 				</div>
 			</React.Fragment>
 		);

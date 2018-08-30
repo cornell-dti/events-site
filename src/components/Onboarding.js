@@ -17,9 +17,11 @@ class Onboarding extends Component
 					{this.props.body}
 				</Typography>
 				{this.props.children}
-				<Button color={"primary"} variant={"contained"} className={classes.spaced} >
-					{this.props.button}
-				</Button>
+				{this.props.button !== undefined
+					? <Button color={"primary"} variant={"contained"} className={classes.spaced} >
+						{this.props.button}
+					</Button>
+					: null}
 			</div>
 		);
 	}
@@ -28,10 +30,11 @@ class Onboarding extends Component
 
 const styles = (theme) => ({
 	root: {
-		flexGrow: 1,
+		height: '80vh',
 		display: 'flex',
 		flexDirection: 'column',
 		alignItems: 'center',
+		justifyContent: 'space-evenly',
 		margin: theme.spacing.unit * 2
 	},
 	title: {
