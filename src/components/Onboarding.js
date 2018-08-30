@@ -13,7 +13,7 @@ class Onboarding extends Component
 				<Typography variant={"headline"} className={classes.title}>
 					{this.props.title}
 				</Typography>
-				<Typography variant={"title"} className={classes.spaced}>
+				<Typography variant={"title"} className={classes.spaced} align={"center"}>
 					{this.props.body}
 				</Typography>
 				{this.props.children}

@@ -58,12 +58,6 @@ class CreateOrg extends Component
 }
 
 const styles = (theme) => ({
-	root: {
-		flexGrow: 1,
-		display: 'flex',
-		flexDirection: 'column',
-		alignItems: 'center'
-	},
 	button: {
 
 	},

@@ -33,6 +33,11 @@ class VerifyCornellStatus extends Component
 	}
 }
 
-const styles = (theme) => ({});
+const styles = (theme) => ({
+	textField: {
+		width: theme.spacing.unit * 50,
+		margin: theme.spacing.unit * 3
+	}
+});
 
 export default withStyles(styles)(VerifyCornellStatus);

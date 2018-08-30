@@ -8,6 +8,7 @@ import Button from "@material-ui/core/Button/Button";
 import CreateOrg from "./CreateOrg";
 import SelectTags from "./SelectTags";
 import VerifyCornellStatus from "./VerifyCornellStatus";
+import VerifyOrg from "./VerifyOrg";
 
 class App extends Component
 {
@@ -35,7 +36,7 @@ class App extends Component
 						</Toolbar>
 					</AppBar>
 					<div className={classes.appBarSpace} />
-					<VerifyCornellStatus />
+					<VerifyOrg />
 				</div>
 			</React.Fragment>
 		);
