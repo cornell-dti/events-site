@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import TextField from "@material-ui/core/TextField/TextField";
 import {withStyles} from "@material-ui/core";
 import Onboarding from "./components/Onboarding";
+import routes from './routes';
 
 class CreateOrg extends Component
 {
@@ -15,7 +16,7 @@ class CreateOrg extends Component
 	{
 		const {classes} = this.props;
 		return (
-			<Onboarding title={"Create an Organization Account"} body={""} button={"Continue"}>
+			<Onboarding title={"Create an Organization Account"} button={"Continue"} link={routes.selectTags.route}>
 				<TextField
 					required
 					id="name"

@@ -4,6 +4,7 @@ import Onboarding from "./components/Onboarding";
 import TextField from "@material-ui/core/TextField/TextField";
 import Typography from "@material-ui/core/Typography/Typography";
 import Button from "@material-ui/core/Button/Button";
+import routes from './routes';
 
 class VerifyCornellStatus extends Component
 {
@@ -13,7 +14,7 @@ class VerifyCornellStatus extends Component
 	{
 		const {classes} = this.props;
 		return (
-			<Onboarding title={"VERIFY YOUR ORGANIZATION"} body={"To make sure the events posted by organizations are accurate, only Cornell organizations can create an organization account.\nSelect a verification method below:"} button={"Done"}>
+			<Onboarding title={"VERIFY YOUR ORGANIZATION"} body={"To make sure the events posted by organizations are accurate, only Cornell organizations can create an organization account.\nSelect a verification method below:"} button={"Done"} link={routes.verifyDone.route}>
 				<TextField
 					id="facebook"
 					label="Organization's Facebook Link"

@@ -6,6 +6,7 @@ import Button from "@material-ui/core/Button/Button";
 import Onboarding from "./components/Onboarding";
 import TextField from "@material-ui/core/TextField/TextField";
 import InputAdornment from "@material-ui/core/InputAdornment/InputAdornment";
+import routes from './routes';
 
 class SelectTags extends Component
 {
@@ -36,7 +37,7 @@ class SelectTags extends Component
 	{
 		const {classes} = this.props;
 		return (
-			<Onboarding title={"SELECT TAGS THAT DESCRIBE YOUR ORGANIZATION"} body={"Select at least 1 tag. This will help people discover your organization more quickly!"} button={"Continue"}>
+			<Onboarding title={"SELECT TAGS THAT DESCRIBE YOUR ORGANIZATION"} body={"Select at least 1 tag. This will help people discover your organization more quickly!"} button={"Continue"} link={routes.verifyCornellStatus.route}>
 				<TextField
 					id="addTag"
 					label="New tag"

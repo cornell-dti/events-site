@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import {withStyles} from "@material-ui/core";
 import Onboarding from "./components/Onboarding";
 import TextField from "@material-ui/core/TextField/TextField";
+import routes from './routes';
 
 class VerifyCornellStatus extends Component
 {
@@ -11,7 +12,7 @@ class VerifyCornellStatus extends Component
 	{
 		const {classes} = this.props;
 		return (
-			<Onboarding title={"VERIFY YOUR CORNELL STATUS"} body={"To keep events and the community Cornell-specific, you must be a Cornell student to create an organization account."} button={"I am a Cornell student"}>
+			<Onboarding title={"VERIFY YOUR CORNELL STATUS"} body={"To keep events and the community Cornell-specific, you must be a Cornell student to create an organization account."} button={"I am a Cornell student"} link={routes.verifyOrg.route}>
 				<TextField
 					required
 					id="name"

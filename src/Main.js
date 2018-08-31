@@ -3,8 +3,9 @@ import AppBar from "@material-ui/core/AppBar/AppBar";
 import Toolbar from "@material-ui/core/Toolbar/Toolbar";
 import Typography from "@material-ui/core/Typography/Typography";
 import Button from "@material-ui/core/Button/Button";
-import VerifyDone from "./VerifyDone";
 import {withStyles} from "@material-ui/core";
+import {Link, Route} from "react-router-dom";
+import routes from './routes';
 
 class Main extends Component
 {
@@ -25,12 +26,14 @@ class Main extends Component
 							Log in
 						</Button>
 						<Button variant={"outlined"} color={"primary"} className={classes.button}>
-							Sign up
+							<Link to={routes.createOrg.route} style={{textDecoration: 'none'}}>
+								Sign up
+							</Link>
 						</Button>
 					</Toolbar>
 				</AppBar>
 				<div className={classes.appBarSpace} />
-				<VerifyDone />
+				{Object.values(routes).map(obj => <Route key={obj.route} path={obj.route} component={obj.component}/>)}
 			</div>
 		);
 	}

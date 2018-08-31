@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import {withStyles} from "@material-ui/core";
 import Typography from "@material-ui/core/Typography/Typography";
 import Button from "@material-ui/core/Button/Button";
+import {Link} from "react-router-dom";
 
 class Onboarding extends Component
 {
@@ -13,13 +14,17 @@ class Onboarding extends Component
 				<Typography variant={"headline"} className={classes.title}>
 					{this.props.title}
 				</Typography>
-				<Typography variant={"title"} className={classes.spaced} align={"center"}>
-					{this.props.body}
-				</Typography>
+				{this.props.body !== undefined
+					? <Typography variant={"title"} className={classes.spaced} align={"center"}>
+						{this.props.body}
+					</Typography>
+					: null}
 				{this.props.children}
 				{this.props.button !== undefined
 					? <Button color={"primary"} variant={"contained"} className={classes.spaced} >
-						{this.props.button}
+						<Link to={this.props.link} style={{textDecoration: 'none'}}>
+							{this.props.button}
+						</Link>
 					</Button>
 					: null}
 			</div>
