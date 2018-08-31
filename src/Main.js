@@ -67,7 +67,7 @@ class Main extends Component
 				<AppBar color={"default"}>
 					<Toolbar>
 						<Typography variant={"title"} color={"inherit"} className={classes.title}>
-							Events
+							cue
 						</Typography>
 						{this.getNavBar(classes)}
 					</Toolbar>
