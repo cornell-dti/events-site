@@ -7,6 +7,8 @@ import DialogContent from "@material-ui/core/DialogContent/DialogContent";
 import TextField from "@material-ui/core/TextField/TextField";
 import {withStyles} from "@material-ui/core";
 import ImageUploader from "./ImageUploader";
+import {connect} from "react-redux";
+import Autocomplete from "./Autocomplete";
 
 class CreateEvent extends Component
 {
@@ -71,6 +73,7 @@ class CreateEvent extends Component
 						onChange={e => this.setState({description: e.target.value})}
 						multiline={true}
 						margin={"normal"} />
+					<Autocomplete data={this.props.tags} />
 				</DialogContent>
 				<DialogActions>
 					<Button onClick={this.props.onCancel} color="secondary">
@@ -92,4 +95,18 @@ const styles = (theme) => ({
 	}
 });
 
+function mapStateToProps(state)
+{
+	return {
+		tags: state.tags.tags.map(tag => ({value: tag, label: tag}))
+	};
+}
+function mapDispatchToProps(dispatch)
+{
+	return {
+
+	};
+}
+
+CreateEvent = connect(mapStateToProps, mapDispatchToProps)(CreateEvent);
 export default withStyles(styles)(CreateEvent);

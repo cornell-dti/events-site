@@ -53,7 +53,8 @@ const styles = (theme) => ({
 	imagePreview: {
 		width: '100%',
 		paddingTop: '56.25%', //16:9 ratio
-		marginTop: theme.spacing.unit * 2
+		marginTop: theme.spacing.unit * 2,
+		backgroundSize: 'cover'
 	}
 });
 

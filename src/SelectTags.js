@@ -8,10 +8,12 @@ import TextField from "@material-ui/core/TextField/TextField";
 import InputAdornment from "@material-ui/core/InputAdornment/InputAdornment";
 import routes from './routes';
 import Icon from "@material-ui/core/Icon/Icon";
+import {connect} from "react-redux";
+import {ADD_TAG} from "./redux/tags";
 
 class SelectTags extends Component
 {
-	state = {tags: new Set(["Business", "Tech", "Greek Life", "Computer Science", "Music", "Parties", "Dance", "Sports", "Politics", "International", "Community Service"]), selectedTags: new Set(), newTag: ""};
+	state = {selectedTags: new Set(), newTag: ""};
 
 	onTagClick(tag)
 	{
@@ -27,10 +29,7 @@ class SelectTags extends Component
 			return;
 		if (this.state.newTag === '')
 			return;
-		if (this.state.tags.has(this.state.newTag))
-			return;
-		this.state.tags.add(this.state.newTag);
-		this.setState({tags: this.state.tags});
+		this.props.addTag(this.state.newTag);
 		this.onTagClick(this.state.newTag);
 		this.setState({newTag: ""});
 	}
@@ -55,7 +54,7 @@ class SelectTags extends Component
 					}}
 					onKeyPress={e => this.onTextFieldKeyDown(e)}/>
 				<GridList cellHeight={"auto"} cols={3}>
-					{[...this.state.tags].map(tag => (
+					{[...this.props.tags].map(tag => (
 						<GridListTile key={tag}>
 							<Button color={"primary"}
 							        variant={this.state.selectedTags.has(tag) ? "contained" : "outlined"}
@@ -82,4 +81,18 @@ const styles = (theme) => ({
 	}
 });
 
+function mapStateToProps(state)
+{
+	return {
+		tags: state.tags.tags
+	};
+}
+function mapDispatchToProps(dispatch)
+{
+	return {
+		addTag: (tag) => dispatch({type: ADD_TAG, tag})
+	}
+}
+
+SelectTags = connect(mapStateToProps, mapDispatchToProps)(SelectTags);
 export default withStyles(styles)(SelectTags);

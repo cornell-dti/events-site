@@ -24,7 +24,7 @@ const initState = {
  */
 export function user(state = initState, action)
 {
-	switch (action)
+	switch (action.type)
 	{
 		case SET_ORG_NAME:
 			return {...state, orgName: action.value};
