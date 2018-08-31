@@ -35,9 +35,10 @@ class Main extends Component
 					</React.Fragment>
 				);
 			case routes.myEvents.route:
+			case routes.profile.route:
 				return (
 					<React.Fragment>
-						<LinkColorless to={routes.myEvents.route}>
+						<LinkColorless to={routes.profile.route}>
 							<Button color={"primary"} className={classes.button}>
 								Profile
 							</Button>
@@ -47,7 +48,7 @@ class Main extends Component
 								My Events
 							</Button>
 						</LinkColorless>
-						<LinkColorless to={routes.myEvents.route}>
+						<LinkColorless to={"/"}>
 							<Button color={"primary"} className={classes.button}>
 								Log Out
 							</Button>
