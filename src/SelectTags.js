@@ -17,11 +17,11 @@ class SelectTags extends Component
 
 	onTagClick(tag)
 	{
+		//keep in mind that array mutation is not allowed for State
 		if (this.state.selectedTags.has(tag))
-			this.state.selectedTags.delete(tag);
+			this.setState({selectedTags: this.state.selectedTags.filter(t => t !== tag)});
 		else
-			this.state.selectedTags.add(tag);
-		this.setState({selectedTags: this.state.selectedTags}); //force update
+			this.setState({selectedTags: [...this.state.selectedTags, tag]});
 	}
 	onTextFieldKeyDown(e)
 	{

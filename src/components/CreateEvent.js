@@ -35,6 +35,11 @@ class CreateEvent extends Component
 	{
 		return date.toISOString().slice(0, 16);
 	}
+	newTag(tag)
+	{
+		if (!this.state.tags.includes(tag))
+			this.setState({tags: [...this.state.tags, tag]});
+	}
 	render()
 	{
 		const {classes} = this.props;
@@ -73,7 +78,11 @@ class CreateEvent extends Component
 						onChange={e => this.setState({description: e.target.value})}
 						multiline={true}
 						margin={"normal"} />
-					<Autocomplete data={this.props.tags} />
+					<Autocomplete
+						label={"Tags"}
+						placeholder={"Select at most 5 tags"}
+						data={this.props.tags}
+						onUpdate={this.newTag.bind(this)} />
 				</DialogContent>
 				<DialogActions>
 					<Button onClick={this.props.onCancel} color="secondary">
