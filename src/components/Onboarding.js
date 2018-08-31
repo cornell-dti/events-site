@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import {withStyles} from "@material-ui/core";
 import Typography from "@material-ui/core/Typography/Typography";
 import Button from "@material-ui/core/Button/Button";
-import {Link} from "react-router-dom";
+import LinkColorless from "./LinkColorless";
 
 class Onboarding extends Component
 {
@@ -21,11 +21,11 @@ class Onboarding extends Component
 					: null}
 				{this.props.children}
 				{this.props.button !== undefined
-					? <Button color={"primary"} variant={"contained"} className={classes.spaced} >
-						<Link to={this.props.link} style={{textDecoration: 'none'}}>
+					? <LinkColorless to={this.props.link}>
+						<Button color={"primary"} variant={"contained"} className={classes.spaced} >
 							{this.props.button}
-						</Link>
-					</Button>
+						</Button>
+					</LinkColorless>
 					: null}
 			</div>
 		);
