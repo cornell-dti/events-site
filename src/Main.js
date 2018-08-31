@@ -22,7 +22,6 @@ class Main extends Component
 						</Typography>
 						<LinkColorless to={routes.myEvents.route}>
 							<Button color={"primary"} className={classes.button}>
-
 								Log in
 							</Button>
 						</LinkColorless>

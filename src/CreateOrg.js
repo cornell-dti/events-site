@@ -19,14 +19,6 @@ class CreateOrg extends Component
 			<Onboarding title={"Create an Organization Account"} button={"Continue"} link={routes.selectTags.route}>
 				<TextField
 					required
-					id="name"
-					label="Organization name"
-					className={classes.textField}
-					value={this.state.name}
-					onChange={e => this.setState({name: e.target.value})}
-					margin={"normal"} />
-				<TextField
-					required
 					id="email"
 					label="Organization email"
 					className={classes.textField}
