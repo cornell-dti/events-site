@@ -55,12 +55,7 @@ class Main extends Component
 						</LinkColorless>
 					</React.Fragment>
 				);
-			//onboarding
-			case routes.createOrg.route:
-			case routes.selectTags.route:
-			case routes.verifyCornellStatus.route:
-			case routes.verifyOrg.route:
-			case routes.verifyDone.route:
+			default:
 				return null;
 		}
 	}

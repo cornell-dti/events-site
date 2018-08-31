@@ -7,6 +7,7 @@ import Onboarding from "./components/Onboarding";
 import TextField from "@material-ui/core/TextField/TextField";
 import InputAdornment from "@material-ui/core/InputAdornment/InputAdornment";
 import routes from './routes';
+import Icon from "@material-ui/core/Icon/Icon";
 
 class SelectTags extends Component
 {
@@ -48,7 +49,7 @@ class SelectTags extends Component
 					InputProps={{
 						startAdornment: (
 							<InputAdornment position="start">
-								+
+								<Icon>add</Icon>
 							</InputAdornment>
 						)
 					}}
