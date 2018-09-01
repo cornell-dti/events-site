@@ -2,7 +2,6 @@ import React, {Component} from 'react';
 import {withStyles} from "@material-ui/core";
 import Typography from "@material-ui/core/Typography/Typography";
 import Logo from "./components/Logo";
-import Button from "@material-ui/core/Button/Button";
 
 class Landing extends Component
 {
@@ -26,7 +25,7 @@ class Landing extends Component
 						</a>
 					</div>
 				</div>
-				<img src={"https://www.cornelldti.org/static//pages/projects/pages/events/feature1.jpg"} className={classes.image} />
+				<img src={"./device.png"} className={classes.image} />
 			</div>
 		);
 	}
@@ -52,7 +51,9 @@ const styles = (theme) => ({
 		marginRight: theme.spacing.unit * 2
 	},
 	image: {
-		height: '85vh'
+		marginTop: theme.spacing.unit * 4,
+		marginRight: theme.spacing.unit * 8,
+		height: '75vh'
 	},
 	tagline: {
 		fontSize: 40

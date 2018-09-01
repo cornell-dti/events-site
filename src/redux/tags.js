@@ -13,6 +13,7 @@ export function tags(state = initState, action)
 				return state;
 			state.tags.push(action.tag);
 			return state;
+			case
 		default:
 			return state;
 	}
