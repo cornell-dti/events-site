@@ -13,12 +13,12 @@ import {ADD_TAG} from "./redux/tags";
 
 class SelectTags extends Component
 {
-	state = {selectedTags: new Set(), newTag: ""};
+	state = {selectedTags: [], newTag: ""};
 
 	onTagClick(tag)
 	{
 		//keep in mind that array mutation is not allowed for State
-		if (this.state.selectedTags.has(tag))
+		if (this.state.selectedTags.includes(tag))
 			this.setState({selectedTags: this.state.selectedTags.filter(t => t !== tag)});
 		else
 			this.setState({selectedTags: [...this.state.selectedTags, tag]});
@@ -57,7 +57,7 @@ class SelectTags extends Component
 					{[...this.props.tags].map(tag => (
 						<GridListTile key={tag}>
 							<Button color={"primary"}
-							        variant={this.state.selectedTags.has(tag) ? "contained" : "outlined"}
+							        variant={this.state.selectedTags.includes(tag) ? "contained" : "outlined"}
 							        onClick={() => this.onTagClick(tag)}>
 								{tag}
 							</Button>

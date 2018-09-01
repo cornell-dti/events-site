@@ -8,7 +8,8 @@ export default class LinkColorless extends Component
 		return (
 			<Link {...this.props}
 				style={{
-					textDecoration: 'none'
+					textDecoration: 'none',
+					...this.props.style
 				}}>
 				{this.props.children}
 			</Link>

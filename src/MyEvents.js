@@ -42,11 +42,11 @@ class MyEvents extends Component
 				<Button variant={"fab"} color={"primary"} className={classes.fab} onClick={() => this.setState({createEvent: true})}>
 					<Icon>add</Icon>
 				</Button>
-				<GridList className={classes.cardContainer} cellHeight={"auto"} cols={3}>
+				<GridList className={classes.cardsContainer} cellHeight={"auto"} cols={3} spacing={50}>
 					{DEMO_EVENTS.map(event => (
-						<GridListTile key={`${event.pk}`}>
+						<div key={`${event.pk}`}>
 							<EventCard name={event.name} location={event.location} />
-						</GridListTile>
+						</div>
 					))}
 				</GridList>
 				<CreateEvent open={this.state.createEvent}
@@ -58,7 +58,7 @@ class MyEvents extends Component
 }
 
 const styles = (theme) => ({
-	cardContainer: {
+	cardsContainer: {
 		width: '100vw'
 	},
 	fab: {

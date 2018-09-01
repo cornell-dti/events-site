@@ -18,12 +18,38 @@ class EventCard extends Component
 						className={classes.image}
 						image="" />
 					<CardContent>
-						<Typography gutterBottom variant="headline" component="h2">
+						<Typography variant="headline" className={classes.title}>
 							{this.props.name}
 						</Typography>
-						<Typography component="p">
+						<Typography variant={"body1"} className={classes.location}>
 							{this.props.location}
 						</Typography>
+						<div className={classes.horizLayout}>
+							<div className={classes.vertLayout}>
+								<Typography variant={"body1"} className={classes.bold}>
+									May
+								</Typography>
+								<Typography variant={"body1"} className={classes.num}>
+									99
+								</Typography>
+							</div>
+							<div className={classes.vertLayout}>
+								<Typography variant={"body1"} className={classes.bold}>
+									Starts
+								</Typography>
+								<Typography variant={"body1"} className={classes.num}>
+									10:08 PM
+								</Typography>
+							</div>
+							<div className={classes.vertLayout}>
+								<Typography variant={"body1"} className={classes.bold}>
+									Going
+								</Typography>
+								<Typography variant={"body1"} className={classes.num}>
+									999
+								</Typography>
+							</div>
+						</div>
 					</CardContent>
 				</CardActionArea>
 			</Card>
@@ -37,10 +63,38 @@ const styles = (theme) => ({
 	},
 	image: {
 		width: '100%',
-		paddingTop: '50%'
+		paddingTop: '50%' //2:1 ratio
 	},
 	actionArea: {
 		width: '100%'
+	},
+	horizLayout: {
+		display: 'flex',
+		flexDirection: 'row',
+		alignItems: 'stretch',
+		justifyContent: 'space-around',
+		marginTop: theme.spacing.unit * 2
+	},
+	vertLayout: {
+		display: 'flex',
+		flexDirection: 'column',
+		alignItems: 'center'
+	},
+	title: {
+		fontWeight: 500,
+		fontSize: 25
+	},
+	location: {
+		fontWeight: 400,
+		fontSize: 20
+	},
+	bold: {
+		fontWeight: 500,
+		fontSize: 20
+	},
+	num: {
+		fontWeight: 400,
+		fontSize: 25
 	}
 });
 

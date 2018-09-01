@@ -66,9 +66,11 @@ class Main extends Component
 			<div className={classes.root}>
 				<AppBar color={"default"}>
 					<Toolbar>
-						<Typography variant={"title"} color={"inherit"} className={classes.title}>
-							cue
-						</Typography>
+						<LinkColorless to={"/"} style={{flexGrow: 1}}>
+							<Typography className={classes.title}>
+								cue
+							</Typography>
+						</LinkColorless>
 						{this.getNavBar(classes)}
 					</Toolbar>
 				</AppBar>
@@ -89,11 +91,16 @@ const styles = (theme) => ({
 		alignItems: 'center'
 	},
 	title: {
-		flexGrow: 1
+		fontWeight: 700,
+		color: '#B8598E',
+		fontSize: 40
 	},
 	appBarSpace: theme.mixins.toolbar,
 	links: {
 		textDecoration: 'none'
+	},
+	button: {
+		marginLeft: theme.spacing.unit * 2
 	}
 });
 
