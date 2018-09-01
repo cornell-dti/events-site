@@ -47,7 +47,8 @@ class CreateEvent extends Component
 			<Dialog open={this.props.open} scroll={"body"}>
 				<DialogTitle>Create an Event</DialogTitle>
 				<DialogContent className={classes.content}>
-					<ImageUploader onImageChange={image => this.setState({image})} />
+					<ImageUploader onImageChange={image => this.setState({image})}
+					               shape={"rectangle"} />
 					<TextField
 						label="Event name"
 						value={this.state.name}

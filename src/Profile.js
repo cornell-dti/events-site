@@ -17,7 +17,7 @@ class Profile extends Component
 		const {classes} = this.props;
 		return (
 			<div className={classes.root}>
-				<ImageUploader onImageChange={this.onImageChange} />
+				<ImageUploader onImageChange={this.onImageChange} shape={"circle"} />
 				<TextField
 					id="name"
 					label="Organization name"
