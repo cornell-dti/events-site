@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import Select from "react-select";
+import CreatableSelect from "react-select/lib/Creatable";
 import MenuItem from "@material-ui/core/MenuItem/MenuItem";
 import TextField from "@material-ui/core/TextField/TextField";
 import {withStyles} from "@material-ui/core";
@@ -21,7 +21,7 @@ class Autocomplete extends Component
 	{
 		const {classes} = this.props;
 		return (
-			<Select
+			<CreatableSelect
 				classes={classes}
 				value={this.state.selected}
 				onChange={this.onSelect.bind(this)}
