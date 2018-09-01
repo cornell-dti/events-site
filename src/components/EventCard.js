@@ -12,7 +12,7 @@ class EventCard extends Component
 	{
 		const {classes} = this.props;
 		return (
-			<Card className={classes.root} raised>
+			<Card className={classes.root} onClick={this.props.onClick} raised>
 				<CardActionArea className={classes.actionArea}>
 					<CardMedia
 						className={classes.image}
@@ -38,7 +38,7 @@ class EventCard extends Component
 									Starts
 								</Typography>
 								<Typography variant={"body1"} className={classes.num}>
-									10:08 PM
+									{this.props.startTime}
 								</Typography>
 							</div>
 							<div className={classes.vertLayout}>
@@ -46,7 +46,7 @@ class EventCard extends Component
 									Going
 								</Typography>
 								<Typography variant={"body1"} className={classes.num}>
-									999
+									{this.props.numAttendees}
 								</Typography>
 							</div>
 						</div>
@@ -63,7 +63,8 @@ const styles = (theme) => ({
 	},
 	image: {
 		width: '100%',
-		paddingTop: '50%' //2:1 ratio
+		paddingTop: '50%', //2:1 ratio
+		backgroundColor: theme.palette.primary.main
 	},
 	actionArea: {
 		width: '100%'
@@ -81,7 +82,7 @@ const styles = (theme) => ({
 		alignItems: 'center'
 	},
 	title: {
-		fontWeight: 500,
+		fontWeight: 600,
 		fontSize: 25
 	},
 	location: {
@@ -89,7 +90,7 @@ const styles = (theme) => ({
 		fontSize: 20
 	},
 	bold: {
-		fontWeight: 500,
+		fontWeight: 600,
 		fontSize: 20
 	},
 	num: {

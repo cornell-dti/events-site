@@ -4,7 +4,6 @@ import Button from "@material-ui/core/Button/Button";
 import Icon from "@material-ui/core/Icon/Icon";
 import CreateEvent from "./components/CreateEvent";
 import EventCard from "./components/EventCard";
-import GridListTile from "@material-ui/core/GridListTile/GridListTile";
 import GridList from "@material-ui/core/GridList/GridList";
 
 const DEMO_EVENTS = [{
@@ -26,6 +25,13 @@ class MyEvents extends Component
 {
 	state = {createEvent: false};
 
+	formatTime(time)
+	{
+		const [hour, minute, second] = time.split(":");
+		const hour12 = hour % 12 === 0 ? 12 : hour % 12; //0 o'clock = 12AM
+		const am_pm = hour < 12 ? 'AM' : 'PM';
+		return `${hour12}:${minute} ${am_pm}`;
+	}
 	onCancelCreate()
 	{
 		this.setState({createEvent: false});
@@ -34,18 +40,27 @@ class MyEvents extends Component
 	{
 		this.setState({createEvent: false});
 	}
+	editEvent(event)
+	{
+		this.setState({createEvent: true});
+	}
 	render()
 	{
 		const {classes} = this.props;
 		return (
-			<div>
+			<div className={classes.root}>
 				<Button variant={"fab"} color={"primary"} className={classes.fab} onClick={() => this.setState({createEvent: true})}>
 					<Icon>add</Icon>
 				</Button>
 				<GridList className={classes.cardsContainer} cellHeight={"auto"} cols={3} spacing={50}>
 					{DEMO_EVENTS.map(event => (
 						<div key={`${event.pk}`}>
-							<EventCard name={event.name} location={event.location} />
+							<EventCard
+								name={event.name}
+								location={event.location}
+								numAttendees={event.num_attendees}
+								startTime={this.formatTime(event.start_time)}
+								onClick={() => this.editEvent(event)} />
 						</div>
 					))}
 				</GridList>
@@ -58,12 +73,15 @@ class MyEvents extends Component
 }
 
 const styles = (theme) => ({
+	root: {
+		padding: theme.spacing.unit * 4,
+		width: '100%'
+	},
 	cardsContainer: {
-		width: '100vw'
+		width: '100%'
 	},
 	fab: {
 		position: 'absolute',
-		marginTop: theme.spacing.unit * 4,
 		right: theme.spacing.unit * 4
 	}
 });
