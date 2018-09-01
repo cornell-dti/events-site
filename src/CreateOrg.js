@@ -18,7 +18,6 @@ class CreateOrg extends Component
 		return (
 			<Onboarding title={"Create an Organization Account"} button={"Continue"} link={routes.selectTags.route}>
 				<TextField
-					required
 					id="email"
 					label="Organization email"
 					className={classes.textField}
@@ -26,7 +25,6 @@ class CreateOrg extends Component
 					onChange={e => this.setState({email: e.target.value})}
 					margin={"normal"} />
 				<TextField
-					required
 					id="password"
 					label="Password"
 					className={classes.textField}
@@ -35,7 +33,6 @@ class CreateOrg extends Component
 					margin={"normal"}
 					type={"password"}/>
 				<TextField
-					required
 					id="confirmPassword"
 					label="Confirm password"
 					className={classes.textField}
