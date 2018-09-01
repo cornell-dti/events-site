@@ -7,6 +7,8 @@ import {withStyles} from "@material-ui/core";
 import {Route, withRouter} from "react-router-dom";
 import routes from './routes';
 import LinkColorless from "./components/LinkColorless";
+import Logo from "./components/Logo";
+import Landing from "./Landing";
 
 class Main extends Component
 {
@@ -67,14 +69,14 @@ class Main extends Component
 				<AppBar color={"default"}>
 					<Toolbar>
 						<LinkColorless to={"/"} style={{flexGrow: 1}}>
-							<Typography className={classes.title}>
-								cue
-							</Typography>
+							<Logo fontSize={40} />
 						</LinkColorless>
 						{this.getNavBar(classes)}
 					</Toolbar>
 				</AppBar>
 				<div className={classes.appBarSpace}/>
+				{this.props.location.pathname === "/"
+					? <Landing /> : null}
 				{Object.values(routes).map(obj => <Route key={obj.route} path={obj.route}
 				                                         component={obj.component}/>)}
 			</div>
@@ -90,15 +92,7 @@ const styles = (theme) => ({
 		flexDirection: 'column',
 		alignItems: 'center'
 	},
-	title: {
-		fontWeight: 700,
-		color: '#B8598E',
-		fontSize: 40
-	},
 	appBarSpace: theme.mixins.toolbar,
-	links: {
-		textDecoration: 'none'
-	},
 	button: {
 		marginLeft: theme.spacing.unit * 2
 	}
