@@ -57,6 +57,9 @@ class ImageUploader extends Component
 
 const styles = (theme) => ({
 	root: {
+		display: 'flex',
+		flexDirection: 'column',
+		alignItems: 'center'
 	},
 	hidden: {
 		height: 0,
