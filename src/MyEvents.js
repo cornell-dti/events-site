@@ -75,7 +75,7 @@ class MyEvents extends Component
 const styles = (theme) => ({
 	root: {
 		padding: theme.spacing.unit * 4,
-		width: '100%'
+		alignSelf: 'stretch'
 	},
 	cardsContainer: {
 		width: '100%'

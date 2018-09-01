@@ -14,7 +14,7 @@ class Autocomplete extends Component
 	onSelect(val)
 	{
 		this.setState({selected: val});
-		this.props.onUpdate(this.state.selected);
+		this.props.onUpdate(val);
 	}
 
 	render()

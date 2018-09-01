@@ -3,10 +3,11 @@ import {withStyles} from "@material-ui/core";
 import ImageUploader from "./components/ImageUploader";
 import TextField from "@material-ui/core/TextField/TextField";
 import Button from "@material-ui/core/Button/Button";
+import TagField from "./components/TagField";
 
 class Profile extends Component
 {
-	state = {name: "Cornell DTI", website: "https://cornelldti.org", email: "hello@cornelldti.org", bio: ""};
+	state = {name: "Cornell DTI", website: "https://cornelldti.org", email: "hello@cornelldti.org", bio: "", tags: []};
 
 	onImageChange(image)
 	{
@@ -48,7 +49,8 @@ class Profile extends Component
 					onChange={e => this.setState({bio: e.target.value})}
 					margin={"normal"}
 					multiline={true}/>
-				<Button color={"primary"} variant={"contained"}>
+				<TagField onNewTags={(tags) => this.setState({tags: tags})} />
+				<Button color={"primary"} variant={"contained"} className={classes.button}>
 					Save
 				</Button>
 			</div>
@@ -59,7 +61,12 @@ class Profile extends Component
 const styles = (theme) => ({
 	root: {
 		display: 'flex',
-		flexDirection: 'column'
+		flexDirection: 'column',
+		alignSelf: 'stretch',
+		padding: theme.spacing.unit * 4
+	},
+	button: {
+		marginTop: theme.spacing.unit * 2
 	}
 });
 export default withStyles(styles)(Profile);

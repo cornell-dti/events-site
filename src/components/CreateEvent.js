@@ -7,8 +7,7 @@ import DialogContent from "@material-ui/core/DialogContent/DialogContent";
 import TextField from "@material-ui/core/TextField/TextField";
 import {withStyles} from "@material-ui/core";
 import ImageUploader from "./ImageUploader";
-import {connect} from "react-redux";
-import Autocomplete from "./Autocomplete";
+import TagField from "./TagField";
 
 class CreateEvent extends Component
 {
@@ -34,11 +33,6 @@ class CreateEvent extends Component
 	stringFromDate(date)
 	{
 		return date.toISOString().slice(0, 16);
-	}
-	newTag(tag)
-	{
-		if (!this.state.tags.includes(tag))
-			this.setState({tags: [...this.state.tags, tag]});
 	}
 	render()
 	{
@@ -79,11 +73,7 @@ class CreateEvent extends Component
 						onChange={e => this.setState({description: e.target.value})}
 						multiline={true}
 						margin={"normal"} />
-					<Autocomplete
-						label={"Tags"}
-						placeholder={"Select at most 5 tags"}
-						data={this.props.tags}
-						onUpdate={this.newTag.bind(this)} />
+					<TagField onNewTags={(tags) => this.setState({tags: tags})} />
 				</DialogContent>
 				<DialogActions>
 					<Button onClick={this.props.onCancel} color="secondary">
@@ -105,18 +95,4 @@ const styles = (theme) => ({
 	}
 });
 
-function mapStateToProps(state)
-{
-	return {
-		tags: state.tags.tags.map(tag => ({value: tag, label: tag}))
-	};
-}
-function mapDispatchToProps(dispatch)
-{
-	return {
-
-	};
-}
-
-CreateEvent = connect(mapStateToProps, mapDispatchToProps)(CreateEvent);
 export default withStyles(styles)(CreateEvent);
