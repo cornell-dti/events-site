@@ -1,6 +1,6 @@
 export const GET_TAGS = "GET_TAGS";
 
-const DATABASE = "http://cuevents-app.herokuapp.com/app";
+const DATABASE = "https://cuevents-app.herokuapp.com/app";
 export const dataService = store => next => action =>
 {
 	next(action);
