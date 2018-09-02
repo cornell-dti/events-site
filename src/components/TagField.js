@@ -23,7 +23,7 @@ class TagField extends Component
 function mapStateToProps(state)
 {
 	return {
-		tags: state.tags.tags.map(tag => ({value: tag, label: tag}))
+		tags: state.tags.tags.map(tag => ({value: tag.name, label: tag.name}))
 	};
 }
 function mapDispatchToProps(dispatch)

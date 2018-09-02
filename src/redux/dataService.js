@@ -1,16 +1,16 @@
 export const GET_TAGS = "GET_TAGS";
 
 const DATABASE = "http://cuevents-app.herokuapp.com/app";
-export function dataService(store, next, action)
+export const dataService = store => next => action =>
 {
 	next(action);
 	switch (action.type)
 	{
 		case GET_TAGS:
-			fetchFromURL(`${DATABASE}/tag/all`, next, GET_TAGS);
+			fetchFromURL(`${DATABASE}/tag/all/`, next, GET_TAGS);
 			break;
 	}
-}
+};
 
 function fetchFromURL(url, next, actionType)
 {

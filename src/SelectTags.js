@@ -84,7 +84,7 @@ const styles = (theme) => ({
 function mapStateToProps(state)
 {
 	return {
-		tags: state.tags.tags
+		tags: state.tags.tags.map(tag => tag.name)
 	};
 }
 function mapDispatchToProps(dispatch)

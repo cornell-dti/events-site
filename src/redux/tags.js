@@ -1,7 +1,9 @@
+import {GET_TAGS} from "./dataService";
+
 export const ADD_TAG = "ADD_TAG";
 
 const initState = {
-	tags: ["Business", "Tech", "Greek Life", "Computer Science", "Music", "Parties", "Dance", "Sports", "Politics", "International", "Community Service"]
+	tags: []
 };
 
 export function tags(state = initState, action)
@@ -13,6 +15,11 @@ export function tags(state = initState, action)
 				return state;
 			state.tags.push(action.tag);
 			return state;
+		case `${GET_TAGS}_RECEIVED`:
+			console.log(JSON.stringify(action.data));
+			return {
+				...state, tags: action.data
+			};
 		default:
 			return state;
 	}
