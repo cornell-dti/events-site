@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import CreatableSelect from "react-select/lib/Creatable";
+import Select from "react-select";
 import MenuItem from "@material-ui/core/MenuItem/MenuItem";
 import TextField from "@material-ui/core/TextField/TextField";
 import {withStyles} from "@material-ui/core";
@@ -16,15 +17,21 @@ class Autocomplete extends Component
 		this.setState({selected: val});
 		this.props.onUpdate(val);
 	}
-
+	onChange(val)
+	{
+		if (this.props.onChange !== undefined)
+			this.props.onChange(val);
+	}
 	render()
 	{
 		const {classes} = this.props;
+		const Field = this.props.canCreate ? CreatableSelect : Select;
 		return (
-			<CreatableSelect
+			<Field
 				classes={classes}
 				value={this.state.selected}
 				onChange={this.onSelect.bind(this)}
+				onInputChange={this.onChange.bind(this)}
 				options={this.props.data}
 				textFieldProps={{
 					label: this.props.label,
@@ -32,10 +39,22 @@ class Autocomplete extends Component
 				}}
 				placeholder={this.props.placeholder}
 				components={components}
-				isMulti
+				isMulti={this.props.multiSelect}
 			/>
 		);
 	}
+}
+
+function NoOptionsMessage(props) {
+	return (
+		<Typography
+			color="textSecondary"
+			className={props.selectProps.classes.noOptionsMessage}
+			{...props.innerProps}
+		>
+			{props.children}
+		</Typography>
+	);
 }
 
 function inputComponent({ inputRef, ...props }) {
@@ -84,6 +103,14 @@ function Placeholder(props) {
 	);
 }
 
+function SingleValue(props) {
+	return (
+		<Typography className={props.selectProps.classes.singleValue} {...props.innerProps}>
+			{props.children}
+		</Typography>
+	);
+}
+
 function ValueContainer(props) {
 	return <div className={props.selectProps.classes.valueContainer}>{props.children}</div>;
 }
@@ -111,9 +138,11 @@ function Menu(props) {
 }
 
 const components = {
+	NoOptionsMessage,
 	Option,
 	Control,
 	Placeholder,
+	SingleValue,
 	MultiValue,
 	ValueContainer,
 	Menu
@@ -137,6 +166,12 @@ const styles = (theme) => ({
 		position: 'absolute',
 		left: 2,
 		fontSize: 16
+	},
+	noOptionsMessage: {
+		padding: `${theme.spacing.unit}px ${theme.spacing.unit * 2}px`,
+	},
+	singleValue: {
+		fontSize: 16,
 	},
 	paper: {
 		position: 'absolute',

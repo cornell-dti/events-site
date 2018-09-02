@@ -8,12 +8,14 @@ import TextField from "@material-ui/core/TextField/TextField";
 import {withStyles} from "@material-ui/core";
 import ImageUploader from "./ImageUploader";
 import TagField from "./TagField";
+import Autocomplete from "./Autocomplete";
 
 class CreateEvent extends Component
 {
-	state = {image: null, name: "", location: "",
+	state = {image: null, name: "", room: "", location: "",
 		from: this.stringFromDate(this.defaultStartTime()),
-		to: this.stringFromDate(this.defaultEndTime()), description: "", tags: []};
+		to: this.stringFromDate(this.defaultEndTime()), description: "", tags: [],
+		locationSuggestions: []};
 
 	//tomorrow, same hour, 0 minutes
 	defaultStartTime()
@@ -34,6 +36,18 @@ class CreateEvent extends Component
 	{
 		return date.toISOString().slice(0, 16);
 	}
+	autocompleteLocation(input)
+	{
+		if (input.length < 3)
+			return;
+		//center at Day Hall, radius = 500 meters
+		const url = `https://maps.googleapis.com/maps/api/place/autocomplete/xml?input=${input}&type=geocode&location=42.44701,-76.48327&radius=500&key=AIzaSyDiuJAmADGofmKXnGzwMj831gHS2b-u6eo`;
+		fetch(url)
+			.then(res => res.json())
+			.then(res => this.setState({locationSuggestions:
+					res.predictions.map(loc => ({name: loc.description, place_id: loc.place_id}))}))
+			.catch(err => console.log(`Maps autocomplete error: ${err}`))
+	}
 	render()
 	{
 		const {classes} = this.props;
@@ -49,10 +63,21 @@ class CreateEvent extends Component
 						onChange={e => this.setState({name: e.target.value})}
 						margin={"normal"}/>
 					<TextField
-						label="Location"
-						value={this.state.location}
-						onChange={e => this.setState({location: e.target.value})}
+						label="Room"
+						value={this.state.room}
+						placeholder={"Building + room to display (e.g. Gates G01)"}
+						onChange={e => this.setState({room: e.target.value})}
 						margin={"normal"} />
+					<Autocomplete
+						label={"Google Maps location"}
+						value={this.state.selected}
+						options={this.state.locationSuggestions.map(loc =>
+							({value: loc.name, label: loc.name}))}
+						onSelect={val => console.log(`select: ${val}`)}
+						onChange={this.autocompleteLocation}
+						placeholder={"Building to navigate to (e.g. Bill and Melinda Gates Hall)"}
+						multiSelect={false}
+						canCreate={false}/>
 					<TextField
 						label="From"
 						value={this.state.from}
