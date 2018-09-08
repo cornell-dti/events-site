@@ -19,7 +19,7 @@ const styles = (theme) => ({
 	title: {
 		fontWeight: 700,
 		lineHeight: 1,
-		color: '#B8598E'
+		color: theme.palette.primary.main
 	}
 });
 

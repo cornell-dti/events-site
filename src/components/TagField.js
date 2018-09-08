@@ -17,8 +17,7 @@ class TagField extends Component
 			placeholder={"Select at most 5 tags"}
 			data={this.props.tags}
 			onUpdate={this.newTags.bind(this)}
-			multiSelect={true}
-			canCreate={true}/>);
+			multiSelect={true} />);
 	}
 }
 
