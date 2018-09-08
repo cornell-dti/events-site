@@ -17,22 +17,22 @@ class CreateEvent extends Component
 		to: this.stringFromDate(this.defaultEndTime()), description: "", tags: [],
 		locationSuggestions: []};
 
-	constructor(props)
-	{
-		super(props);
-		const {google} = window;
-		const mapCenter = new google.maps.LatLng(-33.8617374,151.2021291);
-		const map = new google.maps.Map(document.getElementById('map'), {
-			center: mapCenter,
-			zoom: 15
-		});
-		const service = new google.maps.places.PlacesService(map);
-		var request = {
-			query: 'Museum of Contemporary Art Australia',
-			fields: ['photos', 'formatted_address', 'name', 'rating', 'opening_hours', 'geometry'],
-		};
-		service.findPlaceFromQuery(request, (res) => console.log(`res: ${JSON.stringify(res)}`));
-	}
+	// constructor(props)
+	// {
+	// 	super(props);
+	// 	const {google} = window;
+	// 	const mapCenter = new google.maps.LatLng(-33.8617374,151.2021291);
+	// 	const map = new google.maps.Map(document.createElement('div'), {
+	// 		center: mapCenter,
+	// 		zoom: 15
+	// 	});
+	// 	const service = new google.maps.places.PlacesService(map);
+	// 	var request = {
+	// 		query: 'Museum of Contemporary Art Australia',
+	// 		fields: ['photos', 'formatted_address', 'name', 'rating', 'opening_hours', 'geometry'],
+	// 	};
+	// 	service.findPlaceFromQuery(request, (res) => console.log(`res: ${JSON.stringify(res)}`));
+	// }
 	//tomorrow, same hour, 0 minutes
 	defaultStartTime()
 	{
@@ -57,12 +57,12 @@ class CreateEvent extends Component
 		if (input.length < 3)
 			return;
 		//center at Day Hall, radius = 500 meters
-		// const url = `https://maps.googleapis.com/maps/api/place/autocomplete/xml?input=${input}&type=geocode&location=42.44701,-76.48327&radius=500&key=AIzaSyDiuJAmADGofmKXnGzwMj831gHS2b-u6eo`;
-		// fetch(url)
-		// 	.then(res => res.json())
-		// 	.then(res => this.setState({locationSuggestions:
-		// 			res.predictions.map(loc => ({name: loc.description, place_id: loc.place_id}))}))
-		// 	.catch(err => console.log(`Maps autocomplete error: ${err}`))
+		const url = `https://maps.googleapis.com/maps/api/place/autocomplete/xml?input=${input}&type=geocode&location=42.44701,-76.48327&radius=500&key=AIzaSyDiuJAmADGofmKXnGzwMj831gHS2b-u6eo`;
+		fetch(url)
+			.then(res => res.json())
+			.then(res => this.setState({locationSuggestions:
+					res.predictions.map(loc => ({name: loc.description, place_id: loc.place_id}))}))
+			.catch(err => console.log(`Maps autocomplete error: ${err}`))
 	}
 	render()
 	{
