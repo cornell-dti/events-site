@@ -22,8 +22,8 @@ class Onboarding extends Component
 					: null}
 				{this.props.children}
 				{this.props.button !== undefined
-					? <LinkColorless to={this.props.link}>
-						<Button disabled={!this.props.canClick} color={"primary"} variant={"contained"} className={classes.spaced} >
+					? <LinkColorless to={this.props.link} disabled={!this.props.canClick} >
+						<Button disabled={!this.props.canClick} color={"primary"} variant={"contained"} className={classes.spaced} onClick={this.props.onClick} >
 							{this.props.button}
 						</Button>
 					</LinkColorless>
@@ -36,15 +36,17 @@ class Onboarding extends Component
 
 Onboarding.propTypes = {
 	title: PropTypes.string.isRequired,
-	body: PropTypes.string.isRequired,
+	body: PropTypes.string,
 	button: PropTypes.string,
 	link: PropTypes.string,
-	canClick: PropTypes.bool
+	canClick: PropTypes.bool,
+	onClick: PropTypes.func
 };
 
 const styles = (theme) => ({
 	root: {
 		height: '80vh',
+		width: '45vw',
 		display: 'flex',
 		flexDirection: 'column',
 		alignItems: 'center',

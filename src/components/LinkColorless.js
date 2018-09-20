@@ -6,10 +6,12 @@ export default class LinkColorless extends Component
 {
 	render()
 	{
+		const disabled = this.props.disabled ? {pointerEvents: 'none'} : null;
 		return (
 			<Link {...this.props}
 				style={{
 					textDecoration: 'none',
+					...disabled,
 					...this.props.style
 				}}>
 				{this.props.children}
@@ -19,5 +21,6 @@ export default class LinkColorless extends Component
 }
 
 LinkColorless.propTypes = {
-	style: PropTypes.object
+	style: PropTypes.object,
+	disabled: PropTypes.bool
 };

@@ -9,44 +9,52 @@ import {SET_ORG_EMAIL, SET_ORG_NAME, SET_PASSWORD} from "./redux/user";
 
 class CreateOrg extends Component
 {
-	state = {confirmPassword: ""};
+	state = {name: "", email: "", password: "", confirmPassword: ""};
 
 	confirmPasswordError()
 	{
-		return this.props.password !== this.state.confirmPassword;
+		return this.state.password !== this.state.confirmPassword;
 	}
 	canContinue()
 	{
-		return this.props.name !== undefined && this.props.name !== "" &&
-			this.props.email !== undefined && this.props.email !== "" &&
-			this.props.password !== undefined && this.props.password !== "" &&
+		return this.state.name !== undefined && this.state.name !== "" &&
+			this.state.email !== undefined && this.state.email !== "" &&
+			this.state.password !== undefined && this.state.password !== "" &&
 			!this.confirmPasswordError();
+	}
+	onClick()
+	{
+		this.props.setEmail(this.state.email);
+		this.props.setPassword(this.state.password);
+		this.props.setName(this.state.name);
 	}
 	render()
 	{
 		const {classes} = this.props;
 		return (
-			<Onboarding title={"Create an Organization Account"} button={"Continue"} link={routes.verifyCornellStatus.route} canClick={this.canContinue()}>
+			<Onboarding
+				title={"Create an Organization Account"}
+				button={"Continue"}
+				link={routes.verifyCornellStatus.route}
+				canClick={this.canContinue()}
+				onClick={this.onClick.bind(this)}>
 				<TextField
 					label="Organization name"
 					className={classes.textField}
-					value={this.props.name}
-					onChange={e => this.props.setName(e.target.value)}
-					InputLabelProps={{shrink: true}}
+					value={this.state.name}
+					onChange={e => this.setState({name: e.target.value})}
 					margin={"normal"} />
 				<TextField
 					label="Organization email"
 					className={classes.textField}
-					value={this.props.email}
-					onChange={e => this.props.setEmail(e.target.value)}
-					InputLabelProps={{shrink: true}}
+					value={this.state.email}
+					onChange={e => this.setState({email: e.target.value})}
 					margin={"normal"} />
 				<TextField
 					label="Password"
 					className={classes.textField}
-					value={this.props.password}
-					onChange={e => this.props.setPassword(e.target.value)}
-					InputLabelProps={{shrink: true}}
+					value={this.state.password}
+					onChange={e => this.setState({password: e.target.value})}
 					margin={"normal"}
 					type={"password"}/>
 				<TextField
@@ -54,7 +62,6 @@ class CreateOrg extends Component
 					className={classes.textField}
 					value={this.state.confirmPassword}
 					onChange={e => this.setState({confirmPassword: e.target.value})}
-					InputLabelProps={{shrink: true}}
 					margin={"normal"}
 					type={"password"}
 					error={this.confirmPasswordError()}
@@ -64,37 +71,32 @@ class CreateOrg extends Component
 	}
 }
 
-CreateOrg.propTypes = {
-	name: PropTypes.string.isRequired,
-	email: PropTypes.string.isRequired,
-	password: PropTypes.string.isRequired
-};
-
 const styles = (theme) => ({
 	button: {
 
 	},
 	textField: {
-		width: theme.spacing.unit * 50,
+		width: '100%',
 		margin: theme.spacing.unit * 3
 	}
 });
 
+CreateOrg.propTypes = {
+	setName: PropTypes.func.isRequired,
+	setEmail: PropTypes.func.isRequired,
+	setPassword: PropTypes.func.isRequired
+};
 
 function mapStateToProps(state)
 {
-	return {
-		name: state.user.orgName,
-		email: state.user.orgEmail,
-		password: state.user.password
-	};
+	return {};
 }
 function mapDispatchToProps(dispatch)
 {
 	return {
-		setName: (name) => dispatch({type: SET_ORG_NAME, name}),
-		setEmail: (email) => dispatch({type: SET_ORG_EMAIL, email}),
-		setPassword: (password) => dispatch({type: SET_PASSWORD, password})
+		setName: (name) => dispatch({type: SET_ORG_NAME, value: name}),
+		setEmail: (email) => dispatch({type: SET_ORG_EMAIL, value: email}),
+		setPassword: (password) => dispatch({type: SET_PASSWORD, value: password})
 	}
 }
 
