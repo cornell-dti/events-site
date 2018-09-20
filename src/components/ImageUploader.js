@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import PropTypes from 'prop-types';
 import Button from "@material-ui/core/Button/Button";
 import {withStyles} from "@material-ui/core";
 import classNames from "classnames";
@@ -54,6 +55,11 @@ class ImageUploader extends Component
 		);
 	}
 }
+
+ImageUploader.propTypes = {
+	onImageChange: PropTypes.func.isRequired,
+	shape: PropTypes.string.isRequired
+};
 
 const styles = (theme) => ({
 	root: {

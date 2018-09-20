@@ -17,10 +17,8 @@ export function tags(state = initState, action)
 			return state;
 		case `${GET_TAGS}_RECEIVED`:
 			console.log(JSON.stringify(action.data));
-			return {
-				...state, tags: action.data
-			};
-		default:
-			return state;
+			if (Array.isArray(action.data))
+				return {...state, tags: action.data};
 	}
+	return state;
 }

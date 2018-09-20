@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import PropTypes from 'prop-types';
 import CreatableSelect from "react-select/lib/Creatable";
 import Select from "react-select";
 import MenuItem from "@material-ui/core/MenuItem/MenuItem";
@@ -44,6 +45,19 @@ class Autocomplete extends Component
 		);
 	}
 }
+
+Autocomplete.propTypes = {
+	canCreate: PropTypes.bool.isRequired,
+	multiSelect: PropTypes.bool.isRequired,
+	placeholder: PropTypes.string.isRequired,
+	label: PropTypes.string.isRequired,
+	data: PropTypes.arrayOf(PropTypes.shape({
+		value: PropTypes.string,
+		label: PropTypes.string
+	})).isRequired,
+	onChange: PropTypes.func,
+	onUpdate: PropTypes.func.isRequired
+};
 
 function NoOptionsMessage(props) {
 	return (

@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import PropTypes from 'prop-types';
 import Typography from "@material-ui/core/Typography/Typography";
 import {withStyles} from "@material-ui/core";
 
@@ -14,6 +15,10 @@ class Logo extends Component
 		);
 	}
 }
+
+Logo.propTypes = {
+	fontSize: PropTypes.number.isRequired
+};
 
 const styles = (theme) => ({
 	title: {

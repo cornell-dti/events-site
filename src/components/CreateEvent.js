@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import PropTypes from 'prop-types';
 import Dialog from "@material-ui/core/Dialog/Dialog";
 import DialogTitle from "@material-ui/core/DialogTitle/DialogTitle";
 import DialogActions from "@material-ui/core/DialogActions/DialogActions";
@@ -132,6 +133,12 @@ class CreateEvent extends Component
 		);
 	}
 }
+
+CreateEvent.propTypes = {
+	open: PropTypes.bool.isRequired,
+	onCancel: PropTypes.func.isRequired,
+	onPublish: PropTypes.func.isRequired
+};
 
 const styles = (theme) => ({
 	content: {

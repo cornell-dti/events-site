@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import PropTypes from 'prop-types';
 import {withStyles} from "@material-ui/core";
 import Typography from "@material-ui/core/Typography/Typography";
 import Button from "@material-ui/core/Button/Button";
@@ -22,7 +23,7 @@ class Onboarding extends Component
 				{this.props.children}
 				{this.props.button !== undefined
 					? <LinkColorless to={this.props.link}>
-						<Button color={"primary"} variant={"contained"} className={classes.spaced} >
+						<Button disabled={!this.props.canClick} color={"primary"} variant={"contained"} className={classes.spaced} >
 							{this.props.button}
 						</Button>
 					</LinkColorless>
@@ -32,6 +33,14 @@ class Onboarding extends Component
 	}
 
 }
+
+Onboarding.propTypes = {
+	title: PropTypes.string.isRequired,
+	body: PropTypes.string.isRequired,
+	button: PropTypes.string,
+	link: PropTypes.string,
+	canClick: PropTypes.bool
+};
 
 const styles = (theme) => ({
 	root: {

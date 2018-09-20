@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import PropTypes from 'prop-types';
 import {Link} from "react-router-dom";
 
 export default class LinkColorless extends Component
@@ -16,3 +17,7 @@ export default class LinkColorless extends Component
 		);
 	}
 }
+
+LinkColorless.propTypes = {
+	style: PropTypes.object
+};

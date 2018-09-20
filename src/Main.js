@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import PropTypes from 'prop-types';
 import AppBar from "@material-ui/core/AppBar/AppBar";
 import Toolbar from "@material-ui/core/Toolbar/Toolbar";
 import Typography from "@material-ui/core/Typography/Typography";
@@ -84,6 +85,11 @@ class Main extends Component
 	}
 }
 
+Main.propTypes = {
+	location: PropTypes.shape({
+		pathname: PropTypes.string
+	}).isRequired
+};
 
 const styles = (theme) => ({
 	root: {

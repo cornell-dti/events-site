@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import PropTypes from 'prop-types';
 import Autocomplete from "./Autocomplete";
 import connect from "react-redux/es/connect/connect";
 
@@ -20,6 +21,14 @@ class TagField extends Component
 			multiSelect={true} />);
 	}
 }
+
+TagField.propTypes = {
+	onNewTags: PropTypes.func.isRequired,
+	tags: PropTypes.arrayOf(PropTypes.shape({
+		value: PropTypes.string,
+		label: PropTypes.string
+	})).isRequired
+};
 
 function mapStateToProps(state)
 {

@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import PropTypes from 'prop-types';
 import Card from "@material-ui/core/Card/Card";
 import CardActionArea from "@material-ui/core/CardActionArea/CardActionArea";
 import CardMedia from "@material-ui/core/CardMedia/CardMedia";
@@ -56,6 +57,14 @@ class EventCard extends Component
 		);
 	}
 }
+
+EventCard.propTypes = {
+	name: PropTypes.string.isRequired,
+	startTime: PropTypes.string.isRequired,
+	location: PropTypes.string.isRequired,
+	numAttendees: PropTypes.number.isRequired,
+	onClick: PropTypes.func.isRequired
+};
 
 const styles = (theme) => ({
 	root: {
