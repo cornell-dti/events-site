@@ -1,5 +1,4 @@
-# ProjectName v1.0
-_See [here](https://github.com/cornell-dti/o-week-android/blob/master/README.md) for an example of what a good README.md looks like._
+# cue v1.0
 
 #### Contents
   - [About](#about)
@@ -10,24 +9,25 @@ _See [here](https://github.com/cornell-dti/o-week-android/blob/master/README.md)
   - [Contributors](#contributors)
 
 ## About
-A(n) **[Android, iOS, backend, web]** app for **purpose**. **additional related repository links**.
+A **web** app for student organizations to add events for cue. Here is a list of related repositories: 
+- [events web](https://github.com/cornell-dti/events-site)
+- [events backend](https://github.com/cornell-dti/events-backend)
+- [events manager android](https://github.com/cornell-dti/events-manager-android)
+- [events manager ios](https://github.com/cornell-dti/events-manager-ios)
 
 ## Getting Started
-You will need **required IDE or platform, version number** to run the latest version of this app, which uses the following **SDKs, extensions, packages**:
+You will need IntelliJ IDEA v2018.2.4 to run the latest version of this app, which uses the following:
+- React.js v.16.4.2
+- Material-UI v.3.0.1
 
- * **api name***
- * Android API 27
-   * Android SDK Platform 27, Revision 3
- 
-_Last updated **mm/dd/yyyy**_.
+_Last updated **09/22/2018**_.
 
 ## Dependencies & Libraries
- * **[Example Library](http://example.com)** - **Why we use this library**
- * [Guava](https://github.com/google/guava) - a Google Library containing lots of helpful classes for Java. Most notably, immutable data structures (like ImmutableList) and EventBus, which provides a way for classes that do not have references to each other to communicate.
+ * [react-avatar-editor](https://www.npmjs.com/package/react-avatar-editor) - Similar to Facebook profile picture. Allows you to crop, resize, and rotate an uploaded image. Use for event image upload in event creation.
 
 ## External Documentation
 
-* [Backend API Documentation](https://apiary.io/) - this is an external Apiary documenting the endpoints for our application.
+* [Backend API Documentation](https://cuevents.docs.apiary.io/) - this is an external Apiary documenting the endpoints for our application.
 
 ## Screenshots
 
