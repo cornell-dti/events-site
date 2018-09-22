@@ -47,7 +47,7 @@ class Autocomplete extends Component
 }
 
 Autocomplete.propTypes = {
-	canCreate: PropTypes.bool.isRequired,
+	canCreate: PropTypes.bool,
 	multiSelect: PropTypes.bool.isRequired,
 	placeholder: PropTypes.string.isRequired,
 	label: PropTypes.string.isRequired,

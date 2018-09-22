@@ -6,11 +6,17 @@ import Onboarding from "./components/Onboarding";
 import routes from './routes';
 import connect from "react-redux/es/connect/connect";
 import {SET_ORG_EMAIL, SET_ORG_NAME, SET_PASSWORD} from "./redux/user";
+import Form from "./components/Form";
 
 class CreateOrg extends Component
 {
-	state = {name: "", email: "", password: "", confirmPassword: ""};
+	state = {name: "", email: "", password: "", confirmPassword: "", form: ""};
+	formSubmit = null;
 
+	constructor(props)
+	{
+		super(props);
+	}
 	confirmPasswordError()
 	{
 		return this.state.password !== this.state.confirmPassword;
@@ -27,6 +33,10 @@ class CreateOrg extends Component
 		this.props.setEmail(this.state.email);
 		this.props.setPassword(this.state.password);
 		this.props.setName(this.state.name);
+		document.getElementById("id_username").value = this.state.email;
+		document.getElementById("id_password1").value = this.state.password;
+		document.getElementById("id_password2").value = this.state.confirmPassword;
+		this.formSubmit();
 	}
 	render()
 	{
@@ -66,15 +76,14 @@ class CreateOrg extends Component
 					type={"password"}
 					error={this.confirmPasswordError()}
 					helperText={this.confirmPasswordError() ? "Passwords do not match" : ""}/>
+				<Form url={"https://cuevents-app.herokuapp.com/app/signup/"}
+				      submit={(submit) => this.formSubmit = submit}/>
 			</Onboarding>
 		);
 	}
 }
 
 const styles = (theme) => ({
-	button: {
-
-	},
 	textField: {
 		width: '100%',
 		margin: theme.spacing.unit * 3

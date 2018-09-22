@@ -18,10 +18,8 @@ export default class App extends Component
 			<Provider store={store}>
 				<BrowserRouter>
 					<MuiThemeProvider theme={theme}>
-						<React.Fragment>
-							<CssBaseline />
-							<Main />
-						</React.Fragment>
+						<CssBaseline />
+						<Main />
 					</MuiThemeProvider>
 				</BrowserRouter>
 			</Provider>
