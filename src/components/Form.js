@@ -28,6 +28,9 @@ export default class Form extends Component
 	}
 	submit()
 	{
+		//remove csrf token TODO remove once Arnav says so
+		const tokenInput = document.getElementsByName("csrfmiddlewaretoken")[0];
+		tokenInput.parentNode.removeChild(tokenInput);
 		const form = document.getElementsByTagName("form")[0]; //NOTE: assumes 1 form per page
 		form.target = "formFrame";
 		form.action = this.props.url;
