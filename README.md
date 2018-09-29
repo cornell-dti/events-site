@@ -1,4 +1,4 @@
-# cue v1.0
+# <img src="https://raw.githubusercontent.com/cornell-dti/events-manager-android/master/cue_text_red.png" width="80" height="35"> (Cornell University Events) v1.0
 
 #### Contents
   - [About](#about)
@@ -33,13 +33,16 @@ _Last updated **09/22/2018**_.
 
 _Screenshots showing major parts of app_
 
-<img src="https://raw.githubusercontent.com/cornell-dti/o-week-android/master/Screenshots/1.png" width="250px" style="margin: 10px; border: 1px rgba(0,0,0,0.4) solid;"> <img src="https://raw.githubusercontent.com/cornell-dti/o-week-android/master/Screenshots/2.png" width="250px" style="margin: 10px; border: 1px rgba(0,0,0,0.4) solid;"> <img src="https://raw.githubusercontent.com/cornell-dti/o-week-android/master/Screenshots/3.png" width="250px" style="margin: 10px; border: 1px rgba(0,0,0,0.4) solid;">
+<img src="https://raw.githubusercontent.com/cornell-dti/events-site/master/screenshots/cue_main.png" width="750px" style="margin: 10px; border: 1px rgba(0,0,0,0.4) solid;">
+<img src="https://raw.githubusercontent.com/cornell-dti/events-site/master/screenshots/cue_event_page.png" width="750px" style="margin: 10px; border: 1px rgba(0,0,0,0.4) solid;">
+<img src="https://raw.githubusercontent.com/cornell-dti/events-site/master/screenshots/cue_add_event.png" width="750px" style="margin: 10px; border: 1px rgba(0,0,0,0.4) solid;">
 
 ## Contributors
 
 **School Year**
- * **Name** - **Role**
-
+ * **David Chu** - **Front-End Developer**
+ * **Stacy Wei** - **Front-End Developer**  
+ 
 **2017**
  * **David Chu** - Product Manager
 
