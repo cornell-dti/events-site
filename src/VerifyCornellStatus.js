@@ -6,10 +6,12 @@ import TextField from "@material-ui/core/TextField/TextField";
 import routes from './routes';
 import {SET_NAME, SET_NET_ID} from "./redux/user";
 import connect from "react-redux/es/connect/connect";
+import Form from "./components/Form";
 
 class VerifyCornellStatus extends Component
 {
 	state = {name: "", netid: ""};
+	submitCreateOrg = null;
 
 	canContinue()
 	{
@@ -20,6 +22,10 @@ class VerifyCornellStatus extends Component
 	{
 		this.props.setName(this.state.name);
 		this.props.setNetId(this.state.netid);
+
+		document.getElementById("id_username").value = this.props.orgEmail;
+		document.getElementById("id_password").value = this.props.password;
+		this.submitCreateOrg();
 	}
 
 	render()
@@ -48,6 +54,9 @@ class VerifyCornellStatus extends Component
 					value={this.state.netid}
 					onChange={e => this.setState({netid: e.target.value})}
 					margin={"normal"} />
+				<div>{this.props.orgEmail}</div>
+				<Form url={"https://cuevents-app.herokuapp.com/app/api-auth/login/"}
+				      submit={(submit => this.submitCreateOrg = submit)}/>
 			</Onboarding>
 		)
 	}
@@ -63,11 +72,16 @@ const styles = (theme) => ({
 VerifyCornellStatus.propTypes = {
 	setName: PropTypes.func.isRequired,
 	setNetId: PropTypes.func.isRequired,
+	orgEmail: PropTypes.string.isRequired,
+	password: PropTypes.string.isRequired
 };
 
 function mapStateToProps(state)
 {
-	return {};
+	return {
+		orgEmail: state.user.orgEmail,
+		password: state.user.password
+	};
 }
 function mapDispatchToProps(dispatch)
 {

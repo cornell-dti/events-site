@@ -11,7 +11,7 @@ import Form from "./components/Form";
 class CreateOrg extends Component
 {
 	state = {name: "", email: "", password: "", confirmPassword: "", form: ""};
-	formSubmit = null;
+	submitCreateUser = null;
 
 	constructor(props)
 	{
@@ -36,7 +36,7 @@ class CreateOrg extends Component
 		document.getElementById("id_username").value = this.state.email;
 		document.getElementById("id_password1").value = this.state.password;
 		document.getElementById("id_password2").value = this.state.confirmPassword;
-		this.formSubmit();
+		this.submitCreateUser();
 	}
 	render()
 	{
@@ -77,7 +77,7 @@ class CreateOrg extends Component
 					error={this.confirmPasswordError()}
 					helperText={this.confirmPasswordError() ? "Passwords do not match" : ""}/>
 				<Form url={"https://cuevents-app.herokuapp.com/app/signup/"}
-				      submit={(submit) => this.formSubmit = submit}/>
+				      submit={(submit) => this.submitCreateUser = submit}/>
 			</Onboarding>
 		);
 	}

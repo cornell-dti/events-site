@@ -8,8 +8,8 @@ export const SET_WEBSITE = "SET_WEBSITE";
 
 const initState = {
 	orgName: "",
-	orgEmail: "",
-	password: "",
+	orgEmail: "hello", //TODO remove
+	password: "hellothere", //TODO remove
 	name: "",
 	netid: "",
 	facebookLink: "",
