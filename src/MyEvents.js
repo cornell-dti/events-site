@@ -39,6 +39,7 @@ class MyEvents extends Component
 	onPublishEvent()
 	{
 		this.setState({createEvent: false});
+
 	}
 	editEvent(event)
 	{

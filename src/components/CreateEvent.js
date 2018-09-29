@@ -7,6 +7,7 @@ import Button from "@material-ui/core/Button/Button";
 import DialogContent from "@material-ui/core/DialogContent/DialogContent";
 import TextField from "@material-ui/core/TextField/TextField";
 import {withStyles} from "@material-ui/core";
+import Select from 'react-select';
 import ImageUploader from "./ImageUploader";
 import TagField from "./TagField";
 import Autocomplete from "./Autocomplete";
@@ -14,6 +15,7 @@ import Autocomplete from "./Autocomplete";
 let google = null;
 let mapCenter = null;
 let placesService = null;
+let suggestions = null;
 const radius = 5000;
 
 class CreateEvent extends Component
@@ -34,6 +36,8 @@ class CreateEvent extends Component
 			zoom: 15
 		});
 		placesService = new google.maps.places.PlacesService(map);
+
+		suggestions = [];
 	}
 	//tomorrow, same hour, 0 minutes
 	defaultStartTime()
@@ -69,6 +73,25 @@ class CreateEvent extends Component
 					place_id: loc.place_id}))});
 		});
 	}
+    suggestLocation(input) {
+        if (input.length < 2)
+            return;
+
+        // call to api for the previously looked up stuff
+        const suggestions = [];
+		const filteredSuggestions = [];
+
+        for (var i = 0; i < suggestions.length; i++) {
+        	if (suggestions[i].indexOf(input) != -1)
+                filteredSuggestions.push({name:suggestions[i], place_id:suggestions[i]});
+        }
+
+        this.setState({
+            locationSuggestions: filteredSuggestions.map(loc => ({name: loc.name, place_id: loc.place_id
+            }))
+            // location: buildingName
+        });
+    }
 	render()
 	{
 		const {classes} = this.props;
@@ -83,12 +106,22 @@ class CreateEvent extends Component
 						value={this.state.name}
 						onChange={e => this.setState({name: e.target.value})}
 						margin={"normal"}/>
-					<TextField
-						label="Room"
-						value={this.state.room}
-						placeholder={"Building + room to display (e.g. Gates G01)"}
-						onChange={e => this.setState({room: e.target.value})}
-						margin={"normal"} />
+					{/*<TextField*/}
+						{/*label="Room"*/}
+						{/*value={this.state.room}*/}
+						{/*placeholder={"Building + room to display (e.g. Gates G01)"}*/}
+						{/*onChange={e => this.setState({room: e.target.value})}*/}
+						{/*margin={"normal"} />*/}
+                    <Autocomplete
+                        label={"Room"}
+                        value={this.state.selected}
+                        data={this.state.locationSuggestions.map(loc =>
+                            ({value: loc.name, label: loc.name}))}
+                        onChange={this.suggestLocation.bind(this)}
+                        onUpdate={val => this.setState({location: val})}
+                        placeholder={"Building + room to display (e.g. Gates G01)"}
+                        multiSelect={false}
+                        canCreate={true}/>
 					<Autocomplete
 						label={"Google Maps location"}
 						value={this.state.selected}

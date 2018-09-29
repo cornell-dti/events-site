@@ -2,22 +2,19 @@ import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import Button from "@material-ui/core/Button/Button";
 import {withStyles} from "@material-ui/core";
+import AvatarEditor from 'react-avatar-editor';
 import classNames from "classnames";
 
 class ImageUploader extends Component
 {
-	state = {hasImage: false};
+	state = {hasImage: false, image_file: null};
 
 	onFileChange(e)
 	{
 		const image = e.target.files[0];
 		this.props.onImageChange(image);
-		this.setState({hasImage: true});
+		this.setState({hasImage: true, image_file: image});
 
-		const reader = new FileReader();
-		reader.onload = (ev) =>
-			document.getElementById("imagePreview").style.backgroundImage = "url('" + ev.target.result + "')";
-		reader.readAsDataURL(image);
 	}
 	onUploadClick()
 	{
@@ -47,10 +44,10 @@ class ImageUploader extends Component
 				<Button className={classes.button} onClick={this.onUploadClick}>
 					{this.state.hasImage ? "Change image" : "Upload image"}
 				</Button>
-				{this.state.hasImage
-					? <div id={"imagePreview"} className={classNames(classes.imagePreview,
-						this.classForShape(this.props.shape, classes))} />
-					: null}
+                {this.state.hasImage
+                    ?
+                    <AvatarEditor image = {this.state.image_file} width={500} height={300} border = {0} />
+                    : null}
 			</div>
 		);
 	}
