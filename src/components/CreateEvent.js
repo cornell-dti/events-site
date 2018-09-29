@@ -82,7 +82,7 @@ class CreateEvent extends Component
 		const filteredSuggestions = [];
 
         for (var i = 0; i < suggestions.length; i++) {
-        	if (suggestions[i].indexOf(input) != -1)
+        	if (suggestions[i].indexOf(input) !== -1)
                 filteredSuggestions.push({name:suggestions[i], place_id:suggestions[i]});
         }
 
@@ -106,12 +106,6 @@ class CreateEvent extends Component
 						value={this.state.name}
 						onChange={e => this.setState({name: e.target.value})}
 						margin={"normal"}/>
-					{/*<TextField*/}
-						{/*label="Room"*/}
-						{/*value={this.state.room}*/}
-						{/*placeholder={"Building + room to display (e.g. Gates G01)"}*/}
-						{/*onChange={e => this.setState({room: e.target.value})}*/}
-						{/*margin={"normal"} />*/}
                     <Autocomplete
                         label={"Room"}
                         value={this.state.selected}
