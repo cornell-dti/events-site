@@ -23,9 +23,20 @@ class VerifyCornellStatus extends Component
 		this.props.setName(this.state.name);
 		this.props.setNetId(this.state.netid);
 
-		document.getElementById("id_username").value = this.props.orgEmail;
-		document.getElementById("id_password").value = this.props.password;
-		this.submitCreateOrg();
+		const csrfMiddlewareToken = document.getElementById("csrfmiddlewaretoken").value;
+		fetch("https://cuevents-app.herokuapp.com/app/api-auth/login/", {
+			method: "POST",
+			credentials: "include",
+			body: JSON.stringify({
+				csrfmiddlewaretoken: csrfMiddlewareToken,
+				id_username: this.props.orgEmail,
+				id_password: this.props.password
+			})
+		}).then(res => console.log(JSON.stringify(res)))
+			.catch(err => console.log("ERROR: " + JSON.stringify(err)));
+		// document.getElementById("id_username").value = this.props.orgEmail;
+		// document.getElementById("id_password").value = this.props.password;
+		// this.submitCreateOrg();
 	}
 
 	render()
