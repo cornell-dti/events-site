@@ -23,7 +23,7 @@ class VerifyCornellStatus extends Component
 		this.props.setName(this.state.name);
 		this.props.setNetId(this.state.netid);
 
-		const csrfMiddlewareToken = document.getElementById("csrfmiddlewaretoken").value;
+		const csrfMiddlewareToken = document.getElementsByName("csrfmiddlewaretoken")[0].value;
 		fetch("https://cuevents-app.herokuapp.com/app/api-auth/login/", {
 			method: "POST",
 			credentials: "include",
